@@ -29,13 +29,13 @@ if not os.path.exists(PERSIST_DIR):
 
     embedding = Settings.embed_model
 
-    # Verwende das SentenceTransformer-Modell für Embeddings
+    # use SentenceTransformer-Modell for embeddings
     embedding = SentenceTransformerEmbedding(model)
 
-    # erstelle Index mit dem gewählten Embedding-Modell
+    # create index with selected embedding model
     #index = VectorStoreIndex.from_documents(documents, embedding=embedding)
 
-    # erstelle FAISS-basierten VectorStore
+    # create FAISS-based VectorStore
     d=1536
     faiss_index = faiss.IndexFlatL2(d)  # 512 ist die Dimension des Embeddings, 1536 für gpt-3.5-embeddings
     vector_store = FaissVectorStore(faiss_index=faiss_index)
@@ -56,7 +56,7 @@ else:
 #definiere Abfrageengine
 query_engine = index.as_query_engine(similarity_top_k=10)
 
-# Frage stellen
+# Place Question
 now = time()
 response = query_engine.query("What is multicast?")
 print(f"Elapsed: {round(time() - now, 2)}s")
