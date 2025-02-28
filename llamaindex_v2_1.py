@@ -1,4 +1,4 @@
-#-----------------Installierungen----------------------------
+#-----------------Installation----------------------------
 #Note: Be aware to have the latest version of python installed!
 
 #pip install 
@@ -6,7 +6,7 @@
 #llama-index openai
 #if the storage already exists, you cant load more docs into the rag pipeline
 
-#-----------Hier startet der Code-----------------------------
+#-----------Code starts here-----------------------------
 #Import of libraries
 from dotenv import load_dotenv
 import os
@@ -44,7 +44,7 @@ if not os.path.exists(PERSIST_DIR):
     # load the documents and create the index
     documents = SimpleDirectoryReader("data").load_data()
 
-    #Chun-zise and overlap can be adjusted
+    #Chunk-zise and overlap can be adjusted
     Settings.chunk_size = 512
     Settings.chunk_overlap = 50
 
